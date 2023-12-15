@@ -1,0 +1,31 @@
+				  --> File di testo
+Concatenazione di flussi(Stream)--|
+				  --> Binari = File a byte (File ad Oggetti)
+
+
+  Str.	Alunno	-	     W
+  Str.	Nome	|-->Oggetto --> FILE BINARIO		Persistenza: indipendentemente da ciò che accade io non devo perdere il file
+  Str.	Annno	-	    <-- 
+			     R
+							Serializzabilità di un oggetto: serve a salvare gli oggetti uno dietro l'altro
+	  Inizio									all'inizio del file viene salvata la struttura del file
+	-----------------------------
+	|Struttura|Cognome|Nome|Anno|			Portabilità: caratteristica che permette di trasportare/traferire i file
+	-----------------------------				     quando si salva un file, prima viene data la struttura poi di seguito i vari dati
+
+
+		Ereditare
+	________________________
+
+Extends -> Altra classe
+Implements -> Interfaccia	-> Ci sono metodi astratti e mi obbliga a implementarli
+
+Se si implementa SERIALIZABLE ha dei rischi per esempio rende "pubblici" i membri privati
+
+Se lo si fa sarebbe ottimo creare una variabile:     	private static long final serialVersionUID
+
+
+
+
+
+
