@@ -1,33 +1,39 @@
 import java.io.*;
 
 public class MainLettura {
-        public static void main(String[] args) {
-            boolean finito = false;
+    public static void main(String[] args) {
+        boolean finito = false;
+        File fileAlunni = new File("objectalunni.dat");
+        ObjectInputStream ois  = null;
+        FileInputStream fis = null;
 
-            while(!finito) {
-                try {
+        try {
 
-                    FileInputStream fis = new FileInputStream("objectalunni.dat");
-                    ObjectInputStream ois = new ObjectInputStream(fis);
+            fis = new FileInputStream(fileAlunni);
+            ois = new ObjectInputStream(fis);
 
-                    Object ob = ois.readObject();
-                    Alunno al = (Alunno) ob;
-                    System.out.println("Lettura: " + al);
+            while (!finito) {
+                Object ob = ois.readObject();
+                Alunno al = (Alunno) ob;
+                System.out.println("Lettura: " + al);
+            }
 
-                    ois.close();
-
-                } catch (EOFException e) {
-                    finito = true;
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        } catch (EOFException e) {
+            finito = true;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fis.close();
+                ois.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+
     }
-
-
 }
